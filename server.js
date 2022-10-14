@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(cors());
 app.options('*', cors());
-app.use('/', require('./routes'));
+app.use('/api/v1/', require('./routes'));
 
 mongoose
   .connect(process.env.DATABASE_URI, {
