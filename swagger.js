@@ -7,6 +7,7 @@ const doc = {
   },
   host: 'soccer-api.onrender.com',
   schemes: ['https'],
+  basePath: '/api/v1/'
 };
 
 const outputFile = './documentation/swagger-output.json';

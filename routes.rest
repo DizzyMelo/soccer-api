@@ -1,0 +1,73 @@
+@localhost = localhost 
+@prodhost = soccer-api.onrender.com
+
+// LOCALHOST
+
+### Get All Teams
+GET http://{{localhost}}:3000/api/v1/teams
+
+
+### Create New Team
+POST http://{{localhost}}:3000/api/v1/teams HTTP/1.1 
+content-type: application/json
+
+{
+    "name": "Manchest United",
+    "dateCreated": "12/11/1981",
+    "leage": "Premier League"
+}
+
+### Get All Players
+GET http://{{localhost}}:3000/api/v1/players
+
+
+### Create New Player
+POST http://{{localhost}}:3000/api/v1/players HTTP/1.1 
+content-type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Melo",
+    "birthDate": "12/11/1981",
+    "team": "6349fbcfc93bf2a5d5c2de6e",
+    "isHealthy": true,
+    "bestFoot": "left",
+    "position": "RWB"
+}
+
+
+
+
+// PRODUCTION
+
+### Get All Teams
+GET http://{{prodhost}}/api/v1/teams
+
+
+### Create New Team
+POST http://{{prodhost}}/api/v1/teams HTTP/1.1 
+content-type: application/json
+
+{
+    "name": "Manchest United",
+    "dateCreated": "12/11/1981",
+    "leage": "Premier League"
+}
+
+### Get All Players
+GET http://{{prodhost}}/api/v1/players
+
+
+### Create New Player
+POST http://{{prodhost}}/api/v1/players HTTP/1.1 
+content-type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Melo",
+    "birthDate": "12/11/1981",
+    "team": "6349fbcfc93bf2a5d5c2de6e",
+    "isHealthy": true,
+    "bestFoot": "left",
+    "position": "RWB"
+}

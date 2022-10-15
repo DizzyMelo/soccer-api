@@ -6,7 +6,7 @@
     "version": "1.0.0"
   },
   "host": "soccer-api.onrender.com",
-  "basePath": "/",
+  "basePath": "/api/v1/",
   "schemes": [
     "https"
   ],
