@@ -5,7 +5,7 @@ const doc = {
     title: 'Soccer API',
     description: 'This api provides methods to manage soccer teams and players',
   },
-  host: 'localhost',
+  host: 'soccer-api.onrender.com',
   schemes: ['https'],
 };
 

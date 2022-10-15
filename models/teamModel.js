@@ -14,7 +14,7 @@ const teamSchema = mongoose.Schema({
         default: 'Premier League',
         enum: ['Premier League', 'LaLiga', 'Bundesliga', 'League 1', 'Liga NOS', 'Serie A'],
     },
-});
+}, { versionKey: false });
 
 const Team = mongoose.model("Team", teamSchema);
 

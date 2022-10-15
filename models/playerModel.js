@@ -31,7 +31,7 @@ const playerSchema = mongoose.Schema({
         default: 'CM',
         enum: ['GK', 'CB', 'LB', 'RB', 'LWB', 'RWB', 'SW', 'DM', 'CM', 'AM', 'LM', 'RM', 'CF', 'S', 'SS'],
     },
-});
+}, { versionKey: false });
 
 const Player = mongoose.model("Player", playerSchema);
 

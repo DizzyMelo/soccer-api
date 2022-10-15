@@ -9,7 +9,7 @@ exports.createPlayer = async (req, res, next) => {
 }
 
 exports.getPlayers = async (req, res, next) => {
-    const players = await Player.find()
+    const players = await Player.find().populate('team')
 
     res.status(200).json({
         status: 'success',
