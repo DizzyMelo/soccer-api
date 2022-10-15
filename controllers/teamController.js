@@ -1,6 +1,13 @@
 const Team = require('../models/teamModel');
 
 exports.createTeam = async (req, res, next) => {
+
+    const teamToCreate = {
+        "name": req.body.name,
+        "dateCreated": req.body.dateCreated,
+        "leage": req.body.leage
+    };
+
     const team = await Team.create(req.body);
     res.status(201).json({
         status: 'success',
