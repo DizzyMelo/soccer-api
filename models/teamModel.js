@@ -12,7 +12,7 @@ const teamSchema = mongoose.Schema({
     league: {
         type: String,
         default: 'Premier League',
-        enum: ['Premier League', 'LaLiga', 'Bundesliga', 'League 1', 'Liga NOS', 'Serie A'],
+        enum:{values: ['Premier League', 'LaLiga', 'Bundesliga', 'League 1', 'Liga NOS', 'Serie A', 'Brasileirao'], message: 'Invalid league'},
     },
 }, { versionKey: false });
 

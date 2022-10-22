@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const globalErrorHandler = require('./controllers/errorController');
 
 dotenv.config();
 const app = express();
@@ -20,6 +21,9 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log('DB connection successful'));
+
+
+app.use(globalErrorHandler);
 
 const server = app.listen(port, () => {
     console.log('server running');

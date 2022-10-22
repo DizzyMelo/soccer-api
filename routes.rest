@@ -1,40 +1,37 @@
-@localhost = localhost 
+@localhost = localhost:3000 
 @prodhost = soccer-api.onrender.com
 
 // LOCALHOST
 
 ### Get All Teams
-GET http://{{localhost}}:3000/api/v1/teams
+GET http://{{localhost}}/api/v1/teams
+
+### Get Team
+GET http://{{localhost}}/api/v1/teams/634a0eb33a25999a702753ba
 
 
 ### Create New Team
-POST http://{{localhost}}:3000/api/v1/teams HTTP/1.1 
+POST http://{{localhost}}/api/v1/teams HTTP/1.1 
 content-type: application/json
 
 {
     "name": "Manchest United",
     "dateCreated": "12/11/1981",
-    "leage": "Premier League"
+    "league": "Premier League"
 }
 
-### Get All Players
-GET http://{{localhost}}:3000/api/v1/players
-
-
-### Create New Player
-POST http://{{localhost}}:3000/api/v1/players HTTP/1.1 
+### Update Team
+PUT http://{{localhost}}/api/v1/teams/634a0eb33a25999a702753ba HTTP/1.1 
 content-type: application/json
 
 {
-    "firstName": "John",
-    "lastName": "Melo",
-    "birthDate": "12/11/1981",
-    "team": "6349fbcfc93bf2a5d5c2de6e",
-    "isHealthy": true,
-    "bestFoot": "left",
-    "position": "RWB"
+    "name": "Manchest United",
+    "dateCreated": "12/11/1981",
+    "league": "Bundesliga"
 }
 
+### Delete Team
+DELETE http://{{localhost}}/api/v1/teams/635420dceb53cc797df22a4a
 
 
 
@@ -51,23 +48,5 @@ content-type: application/json
 {
     "name": "Manchest United",
     "dateCreated": "12/11/1981",
-    "leage": "Premier League"
-}
-
-### Get All Players
-GET http://{{prodhost}}/api/v1/players
-
-
-### Create New Player
-POST http://{{prodhost}}/api/v1/players HTTP/1.1 
-content-type: application/json
-
-{
-    "firstName": "John",
-    "lastName": "Melo",
-    "birthDate": "12/11/1981",
-    "team": "6349fbcfc93bf2a5d5c2de6e",
-    "isHealthy": true,
-    "bestFoot": "left",
-    "position": "RWB"
+    "league": "Premier League"
 }
