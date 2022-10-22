@@ -27,7 +27,11 @@ exports.getTeams = catchAsync(async (req, res, next) => {
 
 exports.getTeam = catchAsync(async (req, res, next) => {
     const team = await Team.findById(req.params.id)
-
+    
+    if (!team) {
+        return next(new AppError('Team not found!', 404));
+    }
+    
     res.status(200).json({
         team
     });
