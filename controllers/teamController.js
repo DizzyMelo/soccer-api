@@ -2,7 +2,7 @@ const Team = require('../models/teamModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
-exports.createTeam = async (req, res, next) => {
+exports.createTeam = catchAsync(async (req, res, next) => {
 
     const teamToCreate = {
         "name": req.body.name,
@@ -14,7 +14,7 @@ exports.createTeam = async (req, res, next) => {
     res.status(201).json({
         team
     });
-}
+});
 
 exports.getTeams = catchAsync(async (req, res, next) => {
     const teams = await Team.find()
@@ -33,7 +33,7 @@ exports.getTeam = catchAsync(async (req, res, next) => {
     });
 });
 
-exports.updateTeam = async (req, res, next) => {
+exports.updateTeam = catchAsync(async (req, res, next) => {
     const teamToUpdate = {
         "name": req.body.name,
         "dateCreated": req.body.dateCreated,
@@ -46,7 +46,7 @@ exports.updateTeam = async (req, res, next) => {
     }
 
     res.status(204).json({});
-}
+});
 
 exports.deleteTeam = catchAsync(async (req, res, next) => {
     const team = await Team.findByIdAndDelete(req.params.id)
