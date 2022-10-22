@@ -7,7 +7,7 @@ exports.createTeam = catchAsync(async (req, res, next) => {
     const teamToCreate = {
         "name": req.body.name,
         "dateCreated": req.body.dateCreated,
-        "leage": req.body.leage
+        "league": req.body.leage
     };
 
     const team = await Team.create(teamToCreate);
