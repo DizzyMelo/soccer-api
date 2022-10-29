@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const globalErrorHandler = require('./controllers/errorController');
-const { auth, requiresAuth  } = require('express-openid-connect');
+const { auth } = require('express-openid-connect');
 
 dotenv.config();
 const app = express();
