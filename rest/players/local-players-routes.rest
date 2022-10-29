@@ -1,0 +1,40 @@
+@host = localhost:3000 
+// LOCALHOST
+
+### Get All Players
+GET http://{{host}}/api/v1/players
+
+
+### Get Player
+GET http://{{host}}/api/v1/players/635daeeff04bea73b26eb40c
+
+### Create New Player
+POST http://{{host}}/api/v1/players HTTP/1.1 
+content-type: application/json
+
+{
+    "firstName": "Walter",
+    "lastName": "Ribeiro",
+    "birthDate": "12/11/1981",
+    "team": "6349fbcfc93bf2a5d5c2de6e",
+    "isHealthy": true,
+    "bestFoot": "left",
+    "position": "RWB"
+}
+
+### Update Player
+PUT http://{{host}}/api/v1/players/635db6ea7e5841675e9c9024 HTTP/1.1 
+content-type: application/json
+
+{
+    "firstName": "Walter",
+    "lastName": "Casa Grande",
+    "birthDate": "12/11/1981",
+    "team": "6349fbcfc93bf2a5d5c2de6e",
+    "isHealthy": true,
+    "bestFoot": "left",
+    "position": "RWB"
+}
+
+### Delete Player
+DELETE http://{{host}}/api/v1/players/635db6ea7e5841675e9c9024

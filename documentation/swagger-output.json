@@ -26,31 +26,8 @@
       },
       "post": {
         "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "dateCreated": {
-                  "example": "any"
-                },
-                "league": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
+        "parameters": [],
+        "responses": {}
       }
     },
     "/teams/{id}": {
@@ -74,31 +51,9 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "dateCreated": {
-                  "example": "any"
-                },
-                "league": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          }
-        }
+        "responses": {}
       },
       "delete": {
         "description": "",
@@ -117,51 +72,50 @@
       "get": {
         "description": "",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
+        "responses": {}
       },
       "post": {
         "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/players/{id}": {
+      "get": {
+        "description": "",
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "birthDate": {
-                  "example": "any"
-                },
-                "team": {
-                  "example": "any"
-                },
-                "isHealthy": {
-                  "example": "any"
-                },
-                "bestFoot": {
-                  "example": "any"
-                },
-                "position": {
-                  "example": "any"
-                }
-              }
-            }
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
-        "responses": {
-          "201": {
-            "description": "Created"
+        "responses": {}
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
-        }
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
       }
     }
   }

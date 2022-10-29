@@ -1,0 +1,33 @@
+@host = localhost:3000
+
+// LOCALHOST
+
+### Get All Teams
+GET http://{{host}}/api/v1/teams
+
+### Get Team
+GET http://{{host}}/api/v1/teams/634a0eb33a25999a702753ba
+
+
+### Create New Team
+POST http://{{host}}/api/v1/teams HTTP/1.1 
+content-type: application/json
+
+{
+    "name": "Manchest United",
+    "dateCreated": "12/11/1981",
+    "league": "Premier League"
+}
+
+### Update Team
+PUT http://{{host}}/api/v1/teams/634a0eb33a25999a702753ba HTTP/1.1 
+content-type: application/json
+
+{
+    "name": "Manchest United",
+    "dateCreated": "12/11/1981",
+    "league": "Bundesliga"
+}
+
+### Delete Team
+DELETE http://{{host}}/api/v1/teams/635420dceb53cc797df22a4a
