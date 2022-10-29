@@ -1,6 +1,7 @@
 const express = require('express');
 const teamController = require('../controllers/teamController');
 const { createTeamValidation } = require('../utils/validator');
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 

@@ -4,12 +4,23 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const globalErrorHandler = require('./controllers/errorController');
+const { auth, requiresAuth  } = require('express-openid-connect');
 
 dotenv.config();
 const app = express();
 
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  baseURL: process.env.BASE_URL,
+  clientID: process.env.CLIENT_ID,
+  issuerBaseURL: process.env.ISSUER_BASE_URL,
+  secret: process.env.SECRET,
+};
+
 const port = process.env.PORT || 3000;
 
+app.use(auth(config));
 app.use(bodyParser.json());
 app.use(cors());
 app.options('*', cors());
