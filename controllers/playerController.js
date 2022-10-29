@@ -21,7 +21,7 @@ exports.createPlayer = catchAsync(async (req, res, next) => {
 });
 
 exports.getPlayers = catchAsync(async (req, res, next) => {
-    const players = await Player.find().populate('team')
+    const players = await Player.find();
 
     res.status(200).json({
         status: 'success',
@@ -32,7 +32,7 @@ exports.getPlayers = catchAsync(async (req, res, next) => {
 
 
 exports.getPlayer = catchAsync(async (req, res, next) => {
-    const player = await Player.findById(req.params.id)
+    const player = await Player.findById(req.params.id).populate('team');
     
     if (!player) {
         return next(new AppError('Player not found!', 404));
