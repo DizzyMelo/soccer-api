@@ -26,6 +26,10 @@ app.use(cors());
 app.options('*', cors());
 app.use('/api/v1/', require('./routes'));
 
+app.use('/', (req, res) => {
+  res.send(req.oidc.isAuthenticated() ? 'You are logged in' : 'You are logged out');
+})
+
 mongoose
   .connect(process.env.DATABASE_URI, {
     useNewUrlParser: true,

@@ -2,19 +2,22 @@ const Team = require('../models/teamModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
-exports.createTeam = catchAsync(async (req, res, next) => {
+exports.createTeam = async (req, res, next) => {
 
-    const teamToCreate = {
+    const teamToCreate = new Team({
         "name": req.body.name,
         "dateCreated": req.body.dateCreated,
         "league": req.body.league
-    };
-
-    const team = await Team.create(teamToCreate);
-    res.status(201).json({
-        team
     });
-});
+
+    teamToCreate.save().then(team => {
+        res.status(201).json({
+            team
+        });
+    }).catch(err => {
+        return next(err);
+    });
+};
 
 exports.getTeams = catchAsync(async (req, res, next) => {
     const teams = await Team.find()
@@ -37,20 +40,20 @@ exports.getTeam = catchAsync(async (req, res, next) => {
     });
 });
 
-exports.updateTeam = catchAsync(async (req, res, next) => {
+exports.updateTeam = async (req, res, next) => {
     const teamToUpdate = {
         "name": req.body.name,
         "dateCreated": req.body.dateCreated,
         "league": req.body.league
     };
-    const team = await Team.findByIdAndUpdate(req.params.id, teamToUpdate, {new: true, runValidators: true})
-
-    if (!team) {
-        return next(new AppError('Team not found!', 404));
-    }
-
-    res.status(204).json({});
-});
+    
+    Team.findByIdAndUpdate(req.params.id, teamToUpdate, {new: true, runValidators: true}).then(team => {
+        res.status(204).json({});
+    }).catch(err => {
+        return next(err);
+        // return next(new AppError('Team not found!', 404));
+    });
+};
 
 exports.deleteTeam = catchAsync(async (req, res, next) => {
     const team = await Team.findByIdAndDelete(req.params.id)

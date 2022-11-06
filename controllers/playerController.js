@@ -2,7 +2,7 @@ const Player = require('../models/playerModel');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 
-exports.createPlayer = catchAsync(async (req, res, next) => {
+exports.createPlayer = async (req, res, next) => {
 
     const playerToCreate = {
         "firstName": req.body.firstName,
@@ -13,12 +13,13 @@ exports.createPlayer = catchAsync(async (req, res, next) => {
         "bestFoot": req.body.bestFoot,
         "position": req.body.position
     };
-    const player = await Player.create(playerToCreate);
-    res.status(201).json({
-        status: 'success',
-        player
-    });
-});
+    Player.create(playerToCreate).then(player => {
+        res.status(201).json({
+            status: 'success',
+            player
+        });
+    }).catch(err => next(err));
+};
 
 exports.getPlayers = catchAsync(async (req, res, next) => {
     const players = await Player.find();
@@ -43,7 +44,7 @@ exports.getPlayer = catchAsync(async (req, res, next) => {
     });
 });
 
-exports.updatePlayer = catchAsync(async (req, res, next) => {
+exports.updatePlayer = async (req, res, next) => {
     
     const playerToUpdate = {
         "firstName": req.body.firstName,
@@ -54,14 +55,13 @@ exports.updatePlayer = catchAsync(async (req, res, next) => {
         "bestFoot": req.body.bestFoot,
         "position": req.body.position
     };
-    const player = await Player.findByIdAndUpdate(req.params.id, playerToUpdate, {new: true, runValidators: true})
 
-    if (!player) {
-        return next(new AppError('Player not found!', 404));
-    }
-
-    res.status(204).json({});
-});
+    Player.findByIdAndUpdate(req.params.id, playerToUpdate, {new: true, runValidators: true}).then(player => {
+        res.status(204).json({});
+    }).catch(err => {
+        return next(err)
+    });
+};
 
 exports.deletePlayer = catchAsync(async (req, res, next) => {
     const player = await Player.findByIdAndDelete(req.params.id)
